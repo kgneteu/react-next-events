@@ -9,13 +9,15 @@ import Button from '../../components/ui/button';
 import ErrorAlert from '../../components/ui/error-alert';
 
 function FilteredEventsPage(props) {
+  console.log()
+
   const [loadedEvents, setLoadedEvents] = useState();
   const router = useRouter();
 
   const filterData = router.query.slug;
 
   const { data, error } = useSWR(
-    'https://nextjs-course-c81cc-default-rtdb.firebaseio.com/events.json'
+    'https://react-next-events-default-rtdb.firebaseio.com/events.json'
   );
 
   useEffect(() => {
@@ -97,15 +99,15 @@ function FilteredEventsPage(props) {
 
 // export async function getServerSideProps(context) {
 //   const { params } = context;
-
+//   console.log(params)
 //   const filterData = params.slug;
-
+//
 //   const filteredYear = filterData[0];
 //   const filteredMonth = filterData[1];
-
+//
 //   const numYear = +filteredYear;
 //   const numMonth = +filteredMonth;
-
+//
 //   if (
 //     isNaN(numYear) ||
 //     isNaN(numMonth) ||
@@ -122,12 +124,12 @@ function FilteredEventsPage(props) {
 //       // }
 //     };
 //   }
-
+//
 //   const filteredEvents = await getFilteredEvents({
 //     year: numYear,
 //     month: numMonth,
 //   });
-
+//
 //   return {
 //     props: {
 //       events: filteredEvents,
